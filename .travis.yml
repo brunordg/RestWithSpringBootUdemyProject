@@ -1,0 +1,21 @@
+language: bash
+services: docker
+before_install:
+  - echo "Nós estamos na pasta do docker!"
+script:
+  - docker-compose build
+
+before_deploy: 
+  - echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+deploy:
+  provider:script
+  script:
+    docker push brunordg/mysql-rest-with-spring-boot-udemy
+    docker push brunordg/rest-with-spring-boot-udemy
+  on:
+    branch: master
+notifications:
+  email: false
+      
+  
+  
