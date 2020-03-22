@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   db:
-    image: leandrocgsi/mysql-rest-with-spring-boot-udemy
+    image: brunordg/mysql-rest-with-spring-boot-udemy
     command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
     build:
@@ -14,11 +14,11 @@ services:
       MYSQL_PASSWORD: docker
       MYSQL_DATABASE: rest_with_spring_boot_udemy
     ports:
-      - "3308:3306"
+      - "3306:3306"
     networks:
       - udemy-network
   rest-with-spring-boot-udemy:
-    image: leandrocgsi/rest-with-spring-boot-udemy
+    image: brunordg/rest-with-spring-boot-udemy
     restart: always
     build: ./RestWithSpringBootUdemy
     working_dir: /RestWithSpringBootUdemy

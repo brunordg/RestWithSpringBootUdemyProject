@@ -1,2 +1,2 @@
-/Users/rodrigues/Environment/workspace_springboot_udemy/RestWithSpringBootUdemy/rest-with-springboot-udemy-calculadora/src/test/java/com/example/restwithspringbootudemy/converter/DozerConverterIT.java
-/Users/rodrigues/Environment/workspace_springboot_udemy/RestWithSpringBootUdemy/rest-with-springboot-udemy-calculadora/src/test/java/com/example/restwithspringbootudemy/converter/mock/MockPerson.java
+/RestWithSpringBootUdemy/src/test/java/com/example/restwithspringbootudemy/converter/mock/MockPerson.java
+/RestWithSpringBootUdemy/src/test/java/com/example/restwithspringbootudemy/converter/DozerConverterIT.java

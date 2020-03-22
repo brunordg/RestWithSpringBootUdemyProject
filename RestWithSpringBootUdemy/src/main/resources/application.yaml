@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/rest_with_spring_boot_udemy?useTimezone=true&serverTimezone=UTC
-    password: password
+    url: jdbc:mysql://db:3306/rest_with_spring_boot_udemy?useTimezone=true&serverTimezone=UTC&useSSL=false
+    password: docker
     username: root
     driverClassName: com.mysql.cj.jdbc.Driver
   jackson:
@@ -24,7 +24,7 @@ file:
   upload-dir: /Users/rodrigues/Tmp/UploadDir
 
 flyway:
-  url: jdbc:mysql://localhost:3306/
+  url: jdbc:mysql://db:3306/
   schemas: rest_with_spring_boot_udemy
   user: root
-  password: admin123
+  password: docker
