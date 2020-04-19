@@ -1,7 +1,6 @@
 package com.example.restwithspringbootudemy.controller;
 
 import com.example.restwithspringbootudemy.data.vo.v1.UploadFileResponseVO;
-import com.example.restwithspringbootudemy.exception.MyFileNotFoundException;
 import com.example.restwithspringbootudemy.services.FileStorageService;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;

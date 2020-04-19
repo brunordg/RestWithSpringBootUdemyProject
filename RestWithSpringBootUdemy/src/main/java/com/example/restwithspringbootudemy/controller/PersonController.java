@@ -9,17 +9,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.PagedResources;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-
 import static org.springframework.data.domain.Sort.Direction;
 import static org.springframework.data.domain.Sort.by;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 //@Api(value = "PersonEndpoint", description = "REST API for Person", tags = { "PersonEndpoint" })
 
@@ -34,10 +32,10 @@ public class PersonController {
 
     @ApiOperation(value = "Find all people")
     @GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
-    public ResponseEntity<PagedResources<PersonVO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                            @RequestParam(value = "limit", defaultValue = "10") int limit,
-                                                            @RequestParam(value = "direction", defaultValue = "asc") String direction,
-                                                            PagedResourcesAssembler assembler) {
+    public ResponseEntity<PagedModel<PersonVO>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                        @RequestParam(value = "limit", defaultValue = "10") int limit,
+                                                        @RequestParam(value = "direction", defaultValue = "asc") String direction,
+                                                        PagedResourcesAssembler assembler) {
 
         var sortDirectionn = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
 
@@ -47,12 +45,12 @@ public class PersonController {
         persons.stream()
                 .forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
 
-        return new ResponseEntity(assembler.toResource(persons), HttpStatus.OK);
+        return new ResponseEntity(assembler.toModel(persons), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Find by person name")
     @GetMapping(value = "/findByFirstName/{firstName}", produces = {"application/json", "application/xml", "application/x-yaml"})
-    public ResponseEntity<PagedResources<PersonVO>> findByFirstName(@PathVariable("firstName") String firstName,
+    public ResponseEntity<PagedModel<PersonVO>> findByFirstName(@PathVariable("firstName") String firstName,
                                                                     @RequestParam(value = "page", defaultValue = "0") int page,
                                                                     @RequestParam(value = "limit", defaultValue = "10") int limit,
                                                                     @RequestParam(value = "direction", defaultValue = "asc") String direction,
@@ -66,7 +64,7 @@ public class PersonController {
         persons.stream()
                 .forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
 
-        return new ResponseEntity(assembler.toResource(persons), HttpStatus.OK);
+        return new ResponseEntity(assembler.toModel(persons), HttpStatus.OK);
     }
 
     // @CrossOrigin(origins= "http://localhost:8080")
