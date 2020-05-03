@@ -6,7 +6,5 @@ spring:
     name: rest-with-spring-boot-udemy
   cloud:
     config:
-      server:
-        git:
-          uri: http://localhost:8888
+      uri: http://localhost:8888
       enabled: false
