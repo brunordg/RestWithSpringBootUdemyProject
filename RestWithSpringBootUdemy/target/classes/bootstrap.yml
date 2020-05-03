@@ -1,0 +1,10 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: rest-with-spring-boot-udemy
+  cloud:
+    config:
+      uri: http://localhost:8888
+      enabled: false
