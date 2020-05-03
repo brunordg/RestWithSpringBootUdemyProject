@@ -9,3 +9,4 @@ spring:
       server:
         git:
           uri: http://localhost:8888
+      enabled: false
